@@ -1,7 +1,10 @@
+use std::fs::File;
+
 use actix_web::{web, App, Error, HttpResponse, HttpServer};
 
 async fn hello() -> Result<HttpResponse, Error> {
-    Ok(HttpResponse::Ok().body("Hello there!"))
+    let _ = File::open("fictionalfile.txt")?;
+    Ok(HttpResponse::Ok().body("File read successfully"))
 }
 
 #[actix_web::main]
